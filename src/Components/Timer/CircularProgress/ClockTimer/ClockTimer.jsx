@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
+import { useEffect, useContext } from "react";
+import { StateContext } from "../../../StateProvider";
 
 const ClockTimer = () => {
-	const [time, setTime] = useState(10);
-
-	const [isActive, setIsActive] = useState(false);
+	const { time, setTime, isActive, setIsActive, initTime } =
+		useContext(StateContext);
 
 	useEffect(() => {
 		if (isActive && time > 0) {
@@ -13,12 +13,18 @@ const ClockTimer = () => {
 			}, 1000);
 			return () => clearInterval(interval);
 		}
-	}, [isActive, time]);
+	}, [isActive, setTime, time]);
 
 	const toggleClock = () => {
 		setIsActive(!isActive);
 	};
 
+	const resetTimer = () => {
+		setTime(initTime);
+		setIsActive(false);
+	};
+
+	console.log(typeof time);
 	const getTime = (time) => {
 		const min = Math.floor(time / 60);
 		const sec = time % 60;
@@ -32,6 +38,7 @@ const ClockTimer = () => {
 			<StartStopButton onClick={toggleClock}>
 				{isActive ? "Pause" : "Start"}
 			</StartStopButton>
+			{time === 0 && <ResetButton onClick={resetTimer}>RESET</ResetButton>}
 		</ClockContainer>
 	);
 };
@@ -53,4 +60,9 @@ const StartStopButton = styled.button`
 	font-size: 3rem;
 	text-transform: uppercase;
 	letter-spacing: 1rem;
+	cursor: pointer;
+`;
+
+const ResetButton = styled(StartStopButton)`
+	color: red;
 `;

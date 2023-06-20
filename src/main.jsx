@@ -6,12 +6,15 @@ import { ThemeProvider } from "styled-components";
 
 import { theme } from "./assets/Theme/Theme.ts";
 import { GlobalStyle } from "./assets/GlobalStyle/GlobalStyle.ts";
+import StateProvider from "./Components/StateProvider.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
-		<ThemeProvider theme={theme}>
-			<GlobalStyle />
-			<App />
-		</ThemeProvider>
+		<StateProvider>
+			<ThemeProvider theme={theme}>
+				<GlobalStyle />
+				<App />
+			</ThemeProvider>
+		</StateProvider>
 	</React.StrictMode>
 );

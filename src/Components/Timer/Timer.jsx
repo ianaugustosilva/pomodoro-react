@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 import CircularProgress from "./CircularProgress/CircularProgress";
-import ClockTimer from "./CircularProgress/ClockTimer/ClockTimer";
 
 const Timer = () => {
 	return (
