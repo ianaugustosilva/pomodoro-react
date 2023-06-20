@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { styled } from "styled-components";
+import ClockTimer from "./ClockTimer/ClockTimer";
 
 const CircularProgress = () => {
 	const [progress, setProgress] = useState(55);
 
 	return (
 		<OuterCircle progress={progress}>
-			<InnerCircle></InnerCircle>
+			<InnerCircle>
+				<ClockTimer />
+			</InnerCircle>
 		</OuterCircle>
 	);
 };
@@ -16,20 +19,20 @@ export default CircularProgress;
 export const OuterCircle = styled.div`
 	width: 35rem;
 	height: 35rem;
-	background: #b34444;
+
 	border-radius: 50%;
 	display: grid;
 	place-items: center;
 	background: conic-gradient(
-		red ${({ progress }) => progress}%,
+		${(props) => props.theme.colors.primary} ${({ progress }) => progress}%,
 		transparent ${({ progress }) => progress}%
 	);
 `;
 
 export const InnerCircle = styled.div`
-	width: 32rem;
-	height: 32rem;
-	background: #fff;
+	width: 33rem;
+	height: 33rem;
+	background: ${(props) => props.theme.colors.secondary};
 	border-radius: 50%;
 	display: grid;
 	place-items: center;

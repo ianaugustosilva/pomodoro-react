@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import CircularProgress from "./CircularProgress/CircularProgress";
+import ClockTimer from "./CircularProgress/ClockTimer/ClockTimer";
 
 const Timer = () => {
 	return (
@@ -12,9 +13,13 @@ const Timer = () => {
 export default Timer;
 
 export const TimerContainer = styled.div`
+	background: conic-gradient(
+		${(props) => props.theme.colors.secondary},
+		${(props) => props.theme.colors.bg} 150deg,
+		${(props) => props.theme.colors.secondary}
+	);
 	width: 45rem;
 	height: 45rem;
-	background: white;
 	margin: 2rem auto;
 	border-radius: 50%;
 	display: grid;
