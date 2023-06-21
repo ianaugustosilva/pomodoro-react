@@ -4,8 +4,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { ThemeProvider } from "styled-components";
 
-import { theme } from "./assets/Theme/Theme.ts";
-import { GlobalStyle } from "./assets/GlobalStyle/GlobalStyle.ts";
+import { theme } from "./assets/Theme/Theme.js";
+import { GlobalStyle } from "./assets/GlobalStyle/GlobalStyle.js";
 import StateProvider from "./Components/StateProvider.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
