@@ -24,7 +24,6 @@ const ClockTimer = () => {
 		setIsActive(false);
 	};
 
-	console.log(typeof time);
 	const getTime = (time) => {
 		const min = Math.floor(time / 60);
 		const sec = time % 60;
